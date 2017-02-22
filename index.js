@@ -5,7 +5,7 @@ const path = require('path');
 
 var resolvedPath = function (directoryPath, fileName) {
 	return new Promise(function (resolve, reject) {
-		var val = path.resolve(directoryPath, fileName);
+		var val = path.resolve(directoryPath, "./" + fileName);
 		resolve(val);
 	});
 }
@@ -34,7 +34,7 @@ var readDirFiles = function (directoryPath) {
 			if (err) reject(err);
 			else {
 				var contents = [];
-				for (file in data) {
+				for (var file in data) {
 					fs.readFile(file, 'utf8', (err2, data2) => {
 						if (err2) reject(err2);
 						else contents.append(data2);
@@ -50,19 +50,3 @@ module.exports.resolvedPath = resolvedPath;
 module.exports.readFile = readFile;
 module.exports.readDir = readDir;
 module.exports.readDirFiles = readDirFiles;
-
-// tests
-// const directory_path = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
-// const fileName = 'test1.txt';
-
-// var test_one = function (directoryPath, fileName) {
-// 	var p = resolvedPath(directoryPath, fileName);
-// 	p.then(function(value) {
-// 		console.log('Testing resolvedPath: ' + value);
-// 	})
-// 	.catch(function(err) {
-// 		console.error(err.stack);
-// 	});
-// }
-
-// test_one(directory_path, fileName);
