@@ -46,6 +46,11 @@ function readDirFiles (directoryPath) {
 	});
 }
 
+export {resolvedPath};
+export {readFile};
+export {readDir};
+export {readDirFiles};
+
 // tests
 // const directory_path = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
 // const fileName = 'test1.txt';
