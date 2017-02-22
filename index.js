@@ -4,10 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 var resolvedPath = function (directoryPath, fileName) {
-	return new Promise(function (resolve, reject) {
-		var val = path.resolve(directoryPath, "./" + fileName);
-		resolve(val);
-	});
+	var val = path.resolve(directoryPath, "./" + fileName);
+	return val;
 }
 
 var readFile = function (file) {
@@ -35,7 +33,8 @@ var readDirFiles = function (directoryPath) {
 			else {
 				var contents = [];
 				for (var file in data) {
-					fs.readFile(file, 'utf8', (err2, data2) => {
+					var file_path = path.resolve(directoryPath, file);
+					fs.readFile(file_path, 'utf8', (err2, data2) => {
 						if (err2) reject(err2);
 						else contents.append(data2);
 					});
