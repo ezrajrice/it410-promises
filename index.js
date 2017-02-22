@@ -2,6 +2,7 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const export = require('module.exports');
 
 function resolvedPath (directoryPath, fileName) {
 	return new Promise(function (resolve, reject) {
