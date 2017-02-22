@@ -47,17 +47,17 @@ function readDirFiles (directoryPath) {
 }
 
 // tests
-const directory_path = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
-const fileName = 'test1.txt';
+// const directory_path = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
+// const fileName = 'test1.txt';
 
-var test_one = function (directoryPath, fileName) {
-	var p = resolvedPath(directoryPath, fileName);
-	p.then(function(value) {
-		console.log('Testing resolvedPath: ' + value);
-	})
-	.catch(function(err) {
-		console.error(err.stack);
-	});
-}
+// var test_one = function (directoryPath, fileName) {
+// 	var p = resolvedPath(directoryPath, fileName);
+// 	p.then(function(value) {
+// 		console.log('Testing resolvedPath: ' + value);
+// 	})
+// 	.catch(function(err) {
+// 		console.error(err.stack);
+// 	});
+// }
 
-test_one(directory_path, fileName);
+// test_one(directory_path, fileName);
