@@ -2,16 +2,15 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const export = require('module.exports');
 
-function resolvedPath (directoryPath, fileName) {
+export function resolvedPath (directoryPath, fileName) {
 	return new Promise(function (resolve, reject) {
 		var val = path.resolve(directoryPath, fileName);
 		resolve(val);
 	});
 }
 
-function readFile (file) {
+export function readFile (file) {
 	return new Promise(function (resolve, reject) {
 		fs.readFile(file, 'utf8', (err, data) => {
 			if (err) reject(err);
@@ -20,7 +19,7 @@ function readFile (file) {
 	});
 }
 
-function readDir (directoryPath) {
+export function readDir (directoryPath) {
 	return new Promise(function (resolve, reject) {
 		fs.readdir(directoryPath, 'utf8', (err, data) => {
 			if (err) reject(err);
@@ -29,7 +28,7 @@ function readDir (directoryPath) {
 	});
 }
 
-function readDirFiles (directoryPath) {
+export function readDirFiles (directoryPath) {
 	return new Promise(function (resolve, reject) {
 		fs.readdir(directoryPath, 'utf8', (err, data) => {
 			if (err) reject(err);
@@ -46,11 +45,6 @@ function readDirFiles (directoryPath) {
 		});
 	});
 }
-
-export {resolvedPath};
-export {readFile};
-export {readDir};
-export {readDirFiles};
 
 // tests
 // const directory_path = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
