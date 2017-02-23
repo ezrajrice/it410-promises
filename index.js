@@ -27,21 +27,14 @@ var readDir = function (directoryPath) {
 }
 
 var readDirFiles = function (directoryPath) {
-	return new Promise(function (resolve, reject) {
-		fs.readdir(directoryPath, 'utf8', (err, data) => {
-			if (err) reject(err);
-			else {
-				var contents = [];
-				for (var file in data) {
-					var file_path = path.resolve(directoryPath, file);
-					fs.readFile(file_path, 'utf8', (err2, data2) => {
-						if (err2) reject(err2);
-						else contents.append(data2);
-					});
-				}
-				resolve(contents);
-			}
-		});
+	var promise_files = readDir(directoryPath);
+	return promise_files.then(function (fileNames) {
+		var arr = [];
+		for (var i = 0; i < fileNames.length; i++) {
+			var file_path = resolvedPath(directoryPath, fileNames[i]);
+			arr.push(readFile(file_path));
+		}
+		return Promise.all(arr);
 	});
 }
 
@@ -49,3 +42,12 @@ module.exports.resolvedPath = resolvedPath;
 module.exports.readFile = readFile;
 module.exports.readDir = readDir;
 module.exports.readDirFiles = readDirFiles;
+
+// Testing readDirFiles
+// var file_directory = 'C:\\Users\\ezraj\\OneDrive\\Documents\\Masters Degree\\2017 Winter\\IT 410\\it410-promises\\files';
+// var file_name = 'test1.txt';
+
+// readDirFiles(file_directory)
+// 	.then(function(value) {
+// 		console.log(value);
+// 	})
